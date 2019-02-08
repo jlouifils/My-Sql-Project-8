@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var book = require("../models").Book
+var Book = require("../models").Book
 
 
 router.get('/', (req, res, next) => {
