@@ -12,6 +12,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 //app.settings view engine for app to use pug templates
+var path = require('path');
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 //.use public server to use static files (images, css)

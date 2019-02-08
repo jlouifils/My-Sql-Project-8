@@ -24,7 +24,7 @@ router.get('/new', (req, res, next) => {
 
 router.post('/new', function(req, res, next){
   Book.create(req.body).then(function(book){
-    res.redirect('/books');
+    res.redirect('/books/');
   })
   .catch((error) => {
     if(error.name === 'SequlizeValidationError'){
@@ -96,7 +96,7 @@ router.post('/:id/delete', (req, res, next) => {
     }
   })
   .then((book) => {
-    res.redirect('/books');
+    res.redirect('/books/');
   })
   .catch((error) => {
     res.send(500, error);
