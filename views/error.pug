@@ -1,0 +1,10 @@
+extends layout.pug
+block content
+   form
+      h1 Server Error
+      p Sorry, the server is unable to process your request.
+      br
+      p= error.stack
+      br
+      p Back
+      a(href='/books')
