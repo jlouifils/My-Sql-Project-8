@@ -6,25 +6,32 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 const nodemon = require('nodemon');
+const homeRoutes = require('./routes');
+const bookRoutes = require('./routes/books');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const path = require('path');
+
+
+
 
 // Parse incoming requests/ data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(logger('dev'));
+app.use(cookieParser());
 
 //app.settings view engine for app to use pug templates
-var path = require('path');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 //.use public server to use static files (images, css)
-app.use('/static', express.static('public'));
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 /********************/
 /***** ROUTERS ******/
 /********************/
 
-const homeRoutes = require('./routes');
-const bookRoutes = require('./routes/books');
 
 app.use('/', homeRoutes);
 app.use('/books', bookRoutes);

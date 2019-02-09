@@ -4,8 +4,7 @@ var Book = require("../models").Book
 
 
 router.get('/', (req, res, next) => {
-  Book.findAll({order: [['title', 'ASC']]})
-  .then((books) => {
+  Book.findAll({order: [['title', 'ASC']]}).then((books) => {
     res.render('index',{//index.pug (the table)
       books
     });
@@ -44,8 +43,7 @@ router.post('/new', function(req, res, next){
 
 
 router.get('/:id',(req, res, next) =>{
-  Book.findById(req.params.id)
-  .then((books) => {
+  Book.findById(req.params.id).then((books) => {
     if(books) {
       res.render('updateMe',{books, title:'Is There something you looking for?'});
     } else {
@@ -58,8 +56,7 @@ router.get('/:id',(req, res, next) =>{
 });
 
 router.post('/:id', (req, res, next) => {
-  Book.findById(req.params.id)
-  .then((books) => {
+  Book.findById(req.params.id).then((books) => {
     if(books) {
       return books.update(req.body);
     } else {
