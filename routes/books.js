@@ -85,14 +85,14 @@ router.post('/:id', (req, res, next) => {
 });
 
 router.post('/:id/delete', (req, res, next) => {
-  Book.findById(req.params.id).then((book) => {
+  Book.findById(req.params.id).then((books) => {
     if(books) {
       return books.destory();
     } else {
-      res.send(404,error);
+      res.send(404, error);
     }
   })
-  .then((book) => {
+  .then((books) => {
     res.redirect('/books/');
   })
   .catch((error) => {
