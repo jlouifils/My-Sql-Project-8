@@ -88,7 +88,8 @@ router.post('/:id/delete', (req, res, next) => {
   Book.findById(req.params.id).then((books) => {
     if(books) {
       return books.destroy();
-    } else {
+    }
+    else {
       res.send(404, error);
     }
   })
