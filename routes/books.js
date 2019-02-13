@@ -16,7 +16,7 @@ router.get('/', (req, res, next) => {
 
 //                                                    book
 router.get('/new', (req, res, next) => {
-  res.render('newBook',{
+  res.render('newBook', {
     title: 'Enter A New Book',
   });
 })
@@ -37,7 +37,7 @@ router.post('/new', function(req, res, next){
     }
   })
   .catch((error) => {
-    res.send(500,error);
+    res.status(500, error);
   });
 });
 
