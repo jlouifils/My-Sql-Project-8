@@ -21,23 +21,23 @@ router.get('/new', (req, res, next) => {
   });
 })
 
-router.post('/new', function(req, res, next){
-  Book.create(req.body).then(function(books){
+router.post('/new', function(req, res, next) {
+  Book.create(req.body).then(function(books) {
     res.redirect('/books/');
-  })
-  .catch((error) => {
-    if(error.name === 'SequlizeValidationError') {
+ })
+ .catch((error) => {
+    if(error.name === 'SequelizeValidationError') {
       res.render('newBook', {
-        books: Book.build(req.body),
-        title: 'Enter a New Book',
-        errors: error.errors,
+         books: Book.build(req.body),
+         title: 'Enter a New Book',
+         errors: error.errors,
       })
     } else {
       throw error;
     }
-  })
-  .catch((error) => {
-    res.status(500, error);
+ })
+ .catch((error) => {
+    res.send(500, error);
   });
 });
 
