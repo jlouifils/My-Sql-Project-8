@@ -22,13 +22,13 @@ router.get('/new', (req, res, next) => {
 })
 
 router.post('/new', function(req, res, next){
-  Book.create(req.body).then(function(book){
+  Book.create(req.body).then(function(books){
     res.redirect('/books/');
   })
   .catch((error) => {
-    if(error.name === 'SequlizeValidationError'){
+    if(error.name === 'SequlizeValidationError') {
       res.render('newBook', {
-        book: Book.build(req.body),
+        books: Book.build(req.body),
         title: 'Enter a New Book',
         errors: error.errors,
       })
